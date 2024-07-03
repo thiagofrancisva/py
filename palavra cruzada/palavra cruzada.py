@@ -24,7 +24,7 @@ for x in range(8):
             
             letra_escrita.append(palavra_escrita[0][y])
             palavra_copia.remove(palavra_copia[indice])
-            palavra_leitura.append(leitura[random.randrange(0,len(leitura))])
+            palavra_leitura.append(leitura[random.randrange(0,len(leitura)-1)])
             quadro_inicial = 1050
 
         if palavra_leitura[0] == "v":
