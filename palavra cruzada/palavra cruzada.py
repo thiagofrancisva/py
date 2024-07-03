@@ -17,7 +17,7 @@ quadro_invalido_h = []
 for x in range(8):
     if len(palavra_copia) == len(palavra):
 
-        indice = random.randrange(0,len(palavra_copia))
+        indice = random.randrange(0,(len(palavra_copia)-1))
         palavra_escrita.append(palavra_copia[indice])
         
         for y in range(0,len(palavra_escrita[0])):
