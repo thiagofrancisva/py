@@ -15,9 +15,11 @@ quadro_invalido = []
 quadro_invalido_v = []
 quadro_invalido_h = []
 
-def copiar(i,lista,ref,palavra):
-    for x in range(len(palavra)):
-        letra_quadro_analise.append(lista[ref[i]+x])
+def copiar(i,lista,ref,palavrare):
+    for c in range(palavrare):
+        print(c)
+        letra_quadro_analise.append(lista[ref[i]+c])
+        print(letra_quadro_analise)
 
 for x in range(8):
     if len(palavra_copia) == len(palavra):
@@ -28,9 +30,11 @@ for x in range(8):
         for y in range(0,len(palavra_escrita[0])):
             
             letra_escrita.append(palavra_escrita[0][y])
-            palavra_copia.remove(palavra_copia[indice])
-            palavra_leitura.append(leitura[random.randrange(0,len(leitura)-1)])
-            quadro_inicial = 1050
+
+            
+        palavra_copia.remove(palavra_copia[indice])
+        palavra_leitura.append(leitura[random.randrange(0,len(leitura)-1)])
+        quadro_inicial = 1050
 
         if palavra_leitura[0] == "v":
             
@@ -74,13 +78,15 @@ for x in range(8):
         letra_quadro_copia = letra_quadro.copy()
         letra_indice = []
 
+        print(palavra_escrita)
+
         for s in range(len(palavra_escrita)):
             
             palavra_analise = palavra_escrita[s].split()
             w = 0
             letra_quadro_analise = []
-            copiar(s,letra_quadro_copia,indice_ref,palavra_escrita)
-
+            copiar(s,letra_quadro_copia,indice_ref,len(palavra_escrita[s]))
+            
             #while w < len(palavra_copia):
 
                 #v = 0
