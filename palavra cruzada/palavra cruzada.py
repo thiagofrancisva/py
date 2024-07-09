@@ -31,9 +31,10 @@ for x in range(8):
             
             letra_escrita.append(palavra_escrita[0][y])
 
-            
+        #print(letra_escrita)    
         palavra_copia.remove(palavra_copia[indice])
         palavra_leitura.append(leitura[random.randrange(0,len(leitura))])
+        #print(palavra_leitura)
         quadro_inicial = 1050
 
         if palavra_leitura[0] == "v":
@@ -78,11 +79,11 @@ for x in range(8):
         letra_quadro_copia = letra_quadro.copy()
         letra_indice = []
 
-        print(palavra_escrita)
+        #print(palavra_escrita)
 
         for s in range(len(palavra_escrita)):
             
-            palavra_analise = palavra_escrita[s].split()
+            palavra_analise = palavra_escrita[s]
             w = 0
             letra_quadro_analise = []
             copiar(s,letra_quadro_copia,indice_ref,len(palavra_escrita[s]))
@@ -90,80 +91,86 @@ for x in range(8):
             while w < len(palavra_copia):
 
                 v = 0
-                palavra_copia_analise = palavra_copia[w].split()
-                
+                palavra_copia_analise = palavra_copia[w]
+                #print(palavra_copia_analise)
 
                 for i in range(len(palavra_copia_analise)):
                     
                     if palavra_leitura[s] == "v":
 
-                        if palavra_analise.count(palavra_copia_analise[i]) > 0:
+                        #print("if v")
+
+                        #print(palavra_copia_analise[i:i+1])
+
+                        if palavra_analise.count(palavra_copia_analise[i:i+1]) > 0:
                             
                             for a in range(len(palavra_analise)):
                                 
-                                if palavra_copia_analise[i] == palavra_analise[a]:
-                                    
-                                    if letra_cruzada.count(letra_quadro_analise[a]) == 0:
-                                        
-                                        if quadro_invalido_h.count(letra_quadro_analise[a]) == 0:
+                                if palavra_copia_analise[i] == palavra_analise[a] \
+                                   and letra_cruzada.count(letra_quadro_analise[a]) == 0 \
+                                   and quadro_invalido_h.count(letra_quadro_analise[a]) == 0:
                                             
-                                            m = 0
-                                            invalido = []
+                                        m = 0
+                                        invalido = []
 
-                                            while m < (i + 1) and invalido.count(True) == 0:
+                                        while m < (i + 1) and invalido.count(True) == 0:
 
-                                                sub = letra_quadro_analise[a] - (i - m)
+                                            sub = letra_quadro_analise[a] - (i - m)
 
-                                                print(invalido)
-                                                
-                                                if letra_quadro.count(sub) > 0 \
-                                                   and letra_escrita[letra_quadro.index(sub)] == palavra_copia_analise[(i-m)]:
+                                            #print(invalido)
+                                            
+                                            if letra_quadro.count(sub) > 0 \
+                                               and letra_escrita[letra_quadro.index(sub)] == palavra_copia_analise[(i-m)]:
 
-                                                    pass
-                                                
-                                                elif quadro_invalido.count(sub) > 0 \
-                                                     or quadro_invalido.count(sub - 1) > 0 \
-                                                     or letra_quadro.count(sub - 1) > 0 \
-                                                     or quadro_invalido.count(sub + 100) > 0 \
-                                                     or quadro_invalido.count(sub - 100) > 0 \
-                                                     or quadro_invalido_h.count(sub + 100) > 0 \
-                                                     or quadro_invalido_h.count(sub - 100) > 0:
+                                                pass
+                                            
+                                            elif quadro_invalido.count(sub) > 0 \
+                                                 or quadro_invalido.count(sub - 1) > 0 \
+                                                 or letra_quadro.count(sub - 1) > 0 \
+                                                 or quadro_invalido.count(sub + 100) > 0 \
+                                                 or quadro_invalido.count(sub - 100) > 0 \
+                                                 or quadro_invalido_h.count(sub + 100) > 0 \
+                                                 or quadro_invalido_h.count(sub - 100) > 0:
 
-                                                    invalido.append(True)
+                                                invalido.append(True)
 
-                                                m += 1
-                                                         
-                                            while m < len(palavra_copia_analise) and invalido.count(True) == 0:
+                                            m += 1
+                                                     
+                                        while m < len(palavra_copia_analise) and invalido.count(True) == 0:
 
-                                                soma = letra_quadro_analise[a] + abs(i - m)
+                                            soma = letra_quadro_analise[a] + abs(i - m)
 
-                                                if letra_quadro.count(soma) > 0 \
-                                                   and letra_escrita[letra_quadro.index(soma)] == palavra_copia_analise[m]:
+                                            if letra_quadro.count(soma) > 0 \
+                                               and letra_escrita[letra_quadro.index(soma)] == palavra_copia_analise[m]:
 
-                                                    pass
-                                                
-                                                elif quadro_invalido.count(soma) > 0 \
-                                                     or quadro_invalido.count(soma + 1) > 0 \
-                                                     or letra_quadro.count(soma + 1) > 0 \
-                                                     or quadro_invalido.count(soma + 100) > 0 \
-                                                     or quadro_invalido.count(soma - 100) > 0 \
-                                                     or quadro_invalido_h.count(soma + 100) > 0 \
-                                                     or quadro_invalido_h.count(soma - 100) > 0:
+                                                pass
+                                            
+                                            elif quadro_invalido.count(soma) > 0 \
+                                                 or quadro_invalido.count(soma + 1) > 0 \
+                                                 or letra_quadro.count(soma + 1) > 0 \
+                                                 or quadro_invalido.count(soma + 100) > 0 \
+                                                 or quadro_invalido.count(soma - 100) > 0 \
+                                                 or quadro_invalido_h.count(soma + 100) > 0 \
+                                                 or quadro_invalido_h.count(soma - 100) > 0:
 
-                                                    invalido.append(True)
+                                                invalido.append(True)
 
-                                                m += 1
+                                            m += 1
 
-                                            if invalido.count(True) == 0:
-                                                
-                                                letra_indice.append(i)
-                                                letra_cruzavel_quadro.append(letra_quadro_analise[a])
-                                                
-                                                v += 1
+                                        print ("chegou")
+
+                                        if invalido.count(True) == 0:
+                                            
+                                            letra_indice.append(i)
+                                            letra_cruzavel_quadro.append(letra_quadro_analise[a])
+                                            
+                                            v += 1
 
                     elif palavra_escrita[s] == "h":
 
-                        if palavra_analise.count(palavra_copia_analise[i]) > 0:
+                        #print("if h")
+
+                        if palavra_analise.count(palavra_copia_analise[i:i+1]) > 0:
                             
                             for a in range(len(palavra_analise)):
                                 
@@ -180,7 +187,7 @@ for x in range(8):
 
                                                 sub = letra_quadro_analise[a] - (i - m) * 100
 
-                                                print(invalido)
+                                                #print(invalido)
                                                 
 
                                                 if letra_quadro.count(sub) > 0 \
@@ -221,6 +228,8 @@ for x in range(8):
 
                                                 m += 1
 
+                                            print("chegou")
+
                                             if invalido.count(True) == 0:
                                                 
                                                 letra_indice.append(i)
@@ -237,5 +246,22 @@ for x in range(8):
                     
                 w += 1
         
-        print(letra_cruzavel_qtd)    
-print(letra_quadro)
+        print(letra_cruzavel_qtd)
+        
+##        if not letra_cruzavel_qtd:
+##            palavra_copia = palavra.copy()
+##            palavra_leitura = []
+##            palavra_escrita = []
+##            letra_escrita= []
+##            letra_quadro = []
+##            letra_cruzada = []
+##            quadro_invalido = []
+##            quadro_invalido_v = []
+##            quadro_invalido_h = []
+##            indice_ref = []
+##            f -= f + 1
+            
+
+
+
+#print(letra_quadro)
